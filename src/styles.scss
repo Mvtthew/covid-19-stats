@@ -1,2 +1,26 @@
 // Bootstrap 4
+
+$container-max-widths: (
+	sm: 540px,
+	md: 720px,
+	lg: 960px,
+	xl: 1340px,
+) !default;
+$body-bg: #393e46;
+$body-color: #eeeeee;
+$dark: #232931;
+$enable-shadows: true;
+
+// Cards
+$card-bg: transparent;
+$card-color: #eeeeee;
+$card-border-width: 0;
+
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+// Global
+#app {
+	#main {
+		min-height: calc(100vh - 56px);
+	}
+}
