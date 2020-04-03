@@ -38,25 +38,37 @@
 
 <div id="app">
 	<Navbar />
-	<div class="py-4 container" id="main">
+	<div class="container" id="main">
 		<div class="row">
-			<div class="col-md-7 mr-auto">
+			<div class="col-md-7 mt-4 mr-auto">
 				<SumStats data={summaryData} />
 			</div>
-			<div class="col-md-4">
-				<CountryStats data={countriesData} countryName="Poland" />
+			<div class="col-md-4 mt-4">
+				<CountryStats
+					data={countriesData}
+					countryName="Poland"
+					emojiHtml="🇵🇱" />
 			</div>
 
 		</div>
-		<div class="row mt-5">
-			<div class="col-md-4">
-				<CountryStats data={countriesData} countryName="USA" />
+		<div class="row">
+			<div class="col-md-4 mt-4">
+				<CountryStats
+					data={countriesData}
+					countryName="USA"
+					emojiHtml="🇧🇪" />
 			</div>
-			<div class="col-md-4">
-				<CountryStats data={countriesData} countryName="Germany" />
+			<div class="col-md-4 mt-4">
+				<CountryStats
+					data={countriesData}
+					countryName="Germany"
+					emojiHtml="🇩🇪" />
 			</div>
-			<div class="col-md-4">
-				<CountryStats data={countriesData} countryName="China" />
+			<div class="col-md-4 mt-4">
+				<CountryStats
+					data={countriesData}
+					countryName="China"
+					emojiHtml="🇨🇳" />
 			</div>
 		</div>
 	</div>
