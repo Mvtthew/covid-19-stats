@@ -13,8 +13,12 @@ $enable-shadows: true;
 
 // Cards
 $card-bg: transparent;
+$card-head-bg: transparent;
 $card-color: #dadada;
 $card-border-width: 0;
+.card-header {
+	background-color: transparent !important;
+}
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 

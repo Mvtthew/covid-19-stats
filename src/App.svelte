@@ -14,7 +14,11 @@
 		fetch(`${store.apiUrl}all`)
 			.then(res => res.json())
 			.then(resData => {
-				if (summaryData.cases !== resData.cases) {
+				if (
+					summaryData.cases !== resData.cases ||
+					summaryData.deaths !== resData.deaths ||
+					summaryData.recovered !== resData.recovered
+				) {
 					summaryData = resData;
 					getCountriesData();
 				}
@@ -40,7 +44,7 @@
 	<Navbar />
 	<div class="container" id="main">
 		<div class="row">
-			<div class="col-md-7 mt-4 mr-auto">
+			<div class="col-md-8 mt-4 mr-auto">
 				<SumStats data={summaryData} />
 			</div>
 			<div class="col-md-4 mt-4">
@@ -49,26 +53,25 @@
 					countryName="Poland"
 					emojiHtml="🇵🇱" />
 			</div>
-
 		</div>
-		<div class="row">
-			<div class="col-md-4 mt-4">
-				<CountryStats
-					data={countriesData}
-					countryName="USA"
-					emojiHtml="🇧🇪" />
+		<div class="row shadow-lg mt-4 p-4">
+			<div class="col-12">
+				<h2>The worst situation</h2>
 			</div>
-			<div class="col-md-4 mt-4">
-				<CountryStats
-					data={countriesData}
-					countryName="Germany"
-					emojiHtml="🇩🇪" />
-			</div>
-			<div class="col-md-4 mt-4">
-				<CountryStats
-					data={countriesData}
-					countryName="China"
-					emojiHtml="🇨🇳" />
+			{#if countriesData.length > 1}
+				{#each Array(3) as _, i}
+					<div class="col-md-4 mt-4">
+						<CountryStats
+							data={countriesData}
+							countryName={countriesData[i].country}
+							index={i} />
+					</div>
+				{/each}
+			{/if}
+		</div>
+		<div class="row shadow-lg mt-4 p-4">
+			<div class="col-12">
+				<h2>All statistics</h2>
 			</div>
 		</div>
 	</div>

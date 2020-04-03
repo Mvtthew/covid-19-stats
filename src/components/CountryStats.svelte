@@ -2,6 +2,7 @@
 	export let data;
 	export let countryName;
 	export let emojiHtml;
+	export let index;
 	let countryData;
 	$: {
 		countryData = data.filter(item => item.country === countryName);
@@ -14,12 +15,16 @@
 <div class="card shadow-lg">
 	<div class="card-header">
 		<h4 class="m-0">
-			{@html emojiHtml}
+			{#if emojiHtml}
+				{@html emojiHtml}
+			{:else}
+				<i class="bx bx-map" />
+			{/if}
 			{countryData.country}
 		</h4>
 	</div>
 	<div class="card-body">
-		<ul class="list-group ">
+		<ul class="list-group">
 			<li class="list-group-item bg-transparent">
 				<p class="mb-0 d-flex justify-content-between">
 					<strong>All cases</strong>
@@ -43,7 +48,7 @@
 					<strong>Recovered</strong>
 					<span>
 						{countryData.recovered}
-						<i class="bx bx-layer-plus" />
+						<i class="bx bx-plus-medical" />
 					</span>
 				</p>
 			</li>
@@ -52,7 +57,7 @@
 					<strong>Deaths</strong>
 					<span>
 						{countryData.deaths}
-						<i class="bx bx-layer-minus" />
+						<i class="bx bxs-skull" />
 					</span>
 				</p>
 			</li>

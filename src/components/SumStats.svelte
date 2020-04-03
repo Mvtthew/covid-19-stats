@@ -22,19 +22,19 @@
 			</li>
 			<li class="list-group-item bg-transparent">
 				<p class="mb-0 d-flex justify-content-between">
-					<strong>Deaths</strong>
+					<strong>Recovered</strong>
 					<span>
-						{data.deaths}
-						<i class="bx bx-layer-minus" />
+						{data.recovered}
+						<i class="bx bx-plus-medical" />
 					</span>
 				</p>
 			</li>
 			<li class="list-group-item bg-transparent">
 				<p class="mb-0 d-flex justify-content-between">
-					<strong>Recovered</strong>
+					<strong>Deaths</strong>
 					<span>
-						{data.recovered}
-						<i class="bx bx-layer-plus" />
+						{data.deaths}
+						<i class="bx bxs-skull" />
 					</span>
 				</p>
 			</li>

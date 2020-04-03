@@ -34,6 +34,12 @@ var app = (function () {
     function detach(node) {
         node.parentNode.removeChild(node);
     }
+    function destroy_each(iterations, detaching) {
+        for (let i = 0; i < iterations.length; i += 1) {
+            if (iterations[i])
+                iterations[i].d(detaching);
+        }
+    }
     function element(name) {
         return document.createElement(name);
     }
@@ -42,6 +48,9 @@ var app = (function () {
     }
     function space() {
         return text(' ');
+    }
+    function empty() {
+        return text('');
     }
     function attr(node, attribute, value) {
         if (value == null)
@@ -152,6 +161,19 @@ var app = (function () {
     }
     const outroing = new Set();
     let outros;
+    function group_outros() {
+        outros = {
+            r: 0,
+            c: [],
+            p: outros // parent group
+        };
+    }
+    function check_outros() {
+        if (!outros.r) {
+            run_all(outros.c);
+        }
+        outros = outros.p;
+    }
     function transition_in(block, local) {
         if (block && block.i) {
             outroing.delete(block);
@@ -320,6 +342,15 @@ var app = (function () {
         dispatch_dev("SvelteDOMSetData", { node: text, data });
         text.data = data;
     }
+    function validate_each_argument(arg) {
+        if (typeof arg !== 'string' && !(arg && typeof arg === 'object' && 'length' in arg)) {
+            let msg = '{#each} only iterates over array-like objects.';
+            if (typeof Symbol === 'function' && arg && Symbol.iterator in arg) {
+                msg += ' You can use a spread to convert this iterable into an array.';
+            }
+            throw new Error(msg);
+        }
+    }
     function validate_slots(name, slot, keys) {
         for (const slot_key of Object.keys(slot)) {
             if (!~keys.indexOf(slot_key)) {
@@ -475,7 +506,7 @@ var app = (function () {
     	let strong1;
     	let t8;
     	let span1;
-    	let t9_value = /*data*/ ctx[0].deaths + "";
+    	let t9_value = /*data*/ ctx[0].recovered + "";
     	let t9;
     	let t10;
     	let i2;
@@ -485,7 +516,7 @@ var app = (function () {
     	let strong2;
     	let t13;
     	let span2;
-    	let t14_value = /*data*/ ctx[0].recovered + "";
+    	let t14_value = /*data*/ ctx[0].deaths + "";
     	let t14;
     	let t15;
     	let i3;
@@ -513,7 +544,7 @@ var app = (function () {
     			li1 = element("li");
     			p1 = element("p");
     			strong1 = element("strong");
-    			strong1.textContent = "Deaths";
+    			strong1.textContent = "Recovered";
     			t8 = space();
     			span1 = element("span");
     			t9 = text(t9_value);
@@ -523,7 +554,7 @@ var app = (function () {
     			li2 = element("li");
     			p2 = element("p");
     			strong2 = element("strong");
-    			strong2.textContent = "Recovered";
+    			strong2.textContent = "Deaths";
     			t13 = space();
     			span2 = element("span");
     			t14 = text(t14_value);
@@ -544,21 +575,21 @@ var app = (function () {
     			attr_dev(li0, "class", "list-group-item bg-transparent");
     			add_location(li0, file$1, 13, 3, 236);
     			add_location(strong1, file$1, 24, 5, 574);
-    			attr_dev(i2, "class", "bx bx-layer-minus");
-    			add_location(i2, file$1, 27, 6, 639);
-    			add_location(span1, file$1, 25, 5, 604);
+    			attr_dev(i2, "class", "bx bx-plus-medical");
+    			add_location(i2, file$1, 27, 6, 645);
+    			add_location(span1, file$1, 25, 5, 607);
     			attr_dev(p1, "class", "mb-0 d-flex justify-content-between");
     			add_location(p1, file$1, 23, 4, 520);
     			attr_dev(li1, "class", "list-group-item bg-transparent");
     			add_location(li1, file$1, 22, 3, 471);
-    			add_location(strong2, file$1, 33, 5, 812);
-    			attr_dev(i3, "class", "bx bx-layer-plus");
-    			add_location(i3, file$1, 36, 6, 883);
-    			add_location(span2, file$1, 34, 5, 845);
+    			add_location(strong2, file$1, 33, 5, 819);
+    			attr_dev(i3, "class", "bx bxs-skull");
+    			add_location(i3, file$1, 36, 6, 884);
+    			add_location(span2, file$1, 34, 5, 849);
     			attr_dev(p2, "class", "mb-0 d-flex justify-content-between");
-    			add_location(p2, file$1, 32, 4, 758);
+    			add_location(p2, file$1, 32, 4, 765);
     			attr_dev(li2, "class", "list-group-item bg-transparent");
-    			add_location(li2, file$1, 31, 3, 709);
+    			add_location(li2, file$1, 31, 3, 716);
     			attr_dev(ul, "class", "list-group ");
     			add_location(ul, file$1, 12, 2, 207);
     			attr_dev(div1, "class", "card-body");
@@ -607,8 +638,8 @@ var app = (function () {
     		},
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*data*/ 1 && t4_value !== (t4_value = /*data*/ ctx[0].cases + "")) set_data_dev(t4, t4_value);
-    			if (dirty & /*data*/ 1 && t9_value !== (t9_value = /*data*/ ctx[0].deaths + "")) set_data_dev(t9, t9_value);
-    			if (dirty & /*data*/ 1 && t14_value !== (t14_value = /*data*/ ctx[0].recovered + "")) set_data_dev(t14, t14_value);
+    			if (dirty & /*data*/ 1 && t9_value !== (t9_value = /*data*/ ctx[0].recovered + "")) set_data_dev(t9, t9_value);
+    			if (dirty & /*data*/ 1 && t14_value !== (t14_value = /*data*/ ctx[0].deaths + "")) set_data_dev(t14, t14_value);
     		},
     		i: noop,
     		o: noop,
@@ -689,11 +720,70 @@ var app = (function () {
 
     const file$2 = "src\\components\\CountryStats.svelte";
 
+    // (20:3) {:else}
+    function create_else_block(ctx) {
+    	let i;
+
+    	const block = {
+    		c: function create() {
+    			i = element("i");
+    			attr_dev(i, "class", "bx bx-map");
+    			add_location(i, file$2, 20, 4, 419);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, i, anchor);
+    		},
+    		p: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(i);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block.name,
+    		type: "else",
+    		source: "(20:3) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (18:3) {#if emojiHtml}
+    function create_if_block(ctx) {
+    	let html_tag;
+
+    	const block = {
+    		c: function create() {
+    			html_tag = new HtmlTag(/*emojiHtml*/ ctx[0], null);
+    		},
+    		m: function mount(target, anchor) {
+    			html_tag.m(target, anchor);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*emojiHtml*/ 1) html_tag.p(/*emojiHtml*/ ctx[0]);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) html_tag.d();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block.name,
+    		type: "if",
+    		source: "(18:3) {#if emojiHtml}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
     function create_fragment$2(ctx) {
     	let div2;
     	let div0;
     	let h4;
-    	let html_tag;
     	let t0;
     	let t1_value = /*countryData*/ ctx[1].country + "";
     	let t1;
@@ -740,11 +830,20 @@ var app = (function () {
     	let t21;
     	let i3;
 
+    	function select_block_type(ctx, dirty) {
+    		if (/*emojiHtml*/ ctx[0]) return create_if_block;
+    		return create_else_block;
+    	}
+
+    	let current_block_type = select_block_type(ctx);
+    	let if_block = current_block_type(ctx);
+
     	const block = {
     		c: function create() {
     			div2 = element("div");
     			div0 = element("div");
     			h4 = element("h4");
+    			if_block.c();
     			t0 = space();
     			t1 = text(t1_value);
     			t2 = space();
@@ -789,49 +888,48 @@ var app = (function () {
     			t20 = text(t20_value);
     			t21 = space();
     			i3 = element("i");
-    			html_tag = new HtmlTag(/*emojiHtml*/ ctx[0], t0);
     			attr_dev(h4, "class", "m-0");
-    			add_location(h4, file$2, 15, 2, 322);
+    			add_location(h4, file$2, 16, 2, 342);
     			attr_dev(div0, "class", "card-header");
-    			add_location(div0, file$2, 14, 1, 293);
-    			add_location(strong0, file$2, 24, 5, 566);
+    			add_location(div0, file$2, 15, 1, 313);
+    			add_location(strong0, file$2, 29, 5, 657);
     			attr_dev(i0, "class", "bx bxs-layer");
-    			add_location(i0, file$2, 27, 6, 640);
-    			add_location(span0, file$2, 25, 5, 599);
+    			add_location(i0, file$2, 32, 6, 731);
+    			add_location(span0, file$2, 30, 5, 690);
     			attr_dev(p0, "class", "mb-0 d-flex justify-content-between");
-    			add_location(p0, file$2, 23, 4, 512);
+    			add_location(p0, file$2, 28, 4, 603);
     			attr_dev(li0, "class", "list-group-item bg-transparent");
-    			add_location(li0, file$2, 22, 3, 463);
-    			add_location(strong1, file$2, 33, 5, 808);
+    			add_location(li0, file$2, 27, 3, 554);
+    			add_location(strong1, file$2, 38, 5, 899);
     			attr_dev(i1, "class", "bx bx-layer");
-    			add_location(i1, file$2, 36, 6, 886);
-    			add_location(span1, file$2, 34, 5, 844);
+    			add_location(i1, file$2, 41, 6, 977);
+    			add_location(span1, file$2, 39, 5, 935);
     			attr_dev(p1, "class", "mb-0 d-flex justify-content-between");
-    			add_location(p1, file$2, 32, 4, 754);
+    			add_location(p1, file$2, 37, 4, 845);
     			attr_dev(li1, "class", "list-group-item bg-transparent");
-    			add_location(li1, file$2, 31, 3, 705);
-    			add_location(strong2, file$2, 42, 5, 1053);
-    			attr_dev(i2, "class", "bx bx-layer-plus");
-    			add_location(i2, file$2, 45, 6, 1131);
-    			add_location(span2, file$2, 43, 5, 1086);
+    			add_location(li1, file$2, 36, 3, 796);
+    			add_location(strong2, file$2, 47, 5, 1144);
+    			attr_dev(i2, "class", "bx bx-plus-medical");
+    			add_location(i2, file$2, 50, 6, 1222);
+    			add_location(span2, file$2, 48, 5, 1177);
     			attr_dev(p2, "class", "mb-0 d-flex justify-content-between");
-    			add_location(p2, file$2, 41, 4, 999);
+    			add_location(p2, file$2, 46, 4, 1090);
     			attr_dev(li2, "class", "list-group-item bg-transparent");
-    			add_location(li2, file$2, 40, 3, 950);
-    			add_location(strong3, file$2, 51, 5, 1303);
-    			attr_dev(i3, "class", "bx bx-layer-minus");
-    			add_location(i3, file$2, 54, 6, 1375);
-    			add_location(span3, file$2, 52, 5, 1333);
+    			add_location(li2, file$2, 45, 3, 1041);
+    			add_location(strong3, file$2, 56, 5, 1396);
+    			attr_dev(i3, "class", "bx bxs-skull");
+    			add_location(i3, file$2, 59, 6, 1468);
+    			add_location(span3, file$2, 57, 5, 1426);
     			attr_dev(p3, "class", "mb-0 d-flex justify-content-between");
-    			add_location(p3, file$2, 50, 4, 1249);
+    			add_location(p3, file$2, 55, 4, 1342);
     			attr_dev(li3, "class", "list-group-item bg-transparent");
-    			add_location(li3, file$2, 49, 3, 1200);
-    			attr_dev(ul, "class", "list-group ");
-    			add_location(ul, file$2, 21, 2, 434);
+    			add_location(li3, file$2, 54, 3, 1293);
+    			attr_dev(ul, "class", "list-group");
+    			add_location(ul, file$2, 26, 2, 526);
     			attr_dev(div1, "class", "card-body");
-    			add_location(div1, file$2, 20, 1, 407);
+    			add_location(div1, file$2, 25, 1, 499);
     			attr_dev(div2, "class", "card shadow-lg");
-    			add_location(div2, file$2, 13, 0, 262);
+    			add_location(div2, file$2, 14, 0, 282);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -840,7 +938,7 @@ var app = (function () {
     			insert_dev(target, div2, anchor);
     			append_dev(div2, div0);
     			append_dev(div0, h4);
-    			html_tag.m(h4);
+    			if_block.m(h4, null);
     			append_dev(h4, t0);
     			append_dev(h4, t1);
     			append_dev(div2, t2);
@@ -883,7 +981,18 @@ var app = (function () {
     			append_dev(span3, i3);
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*emojiHtml*/ 1) html_tag.p(/*emojiHtml*/ ctx[0]);
+    			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block) {
+    				if_block.p(ctx, dirty);
+    			} else {
+    				if_block.d(1);
+    				if_block = current_block_type(ctx);
+
+    				if (if_block) {
+    					if_block.c();
+    					if_block.m(h4, t0);
+    				}
+    			}
+
     			if (dirty & /*countryData*/ 2 && t1_value !== (t1_value = /*countryData*/ ctx[1].country + "")) set_data_dev(t1, t1_value);
     			if (dirty & /*countryData*/ 2 && t5_value !== (t5_value = /*countryData*/ ctx[1].cases + "")) set_data_dev(t5, t5_value);
     			if (dirty & /*countryData*/ 2 && t10_value !== (t10_value = /*countryData*/ ctx[1].active + "")) set_data_dev(t10, t10_value);
@@ -894,6 +1003,7 @@ var app = (function () {
     		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div2);
+    			if_block.d();
     		}
     	};
 
@@ -912,8 +1022,9 @@ var app = (function () {
     	let { data } = $$props;
     	let { countryName } = $$props;
     	let { emojiHtml } = $$props;
+    	let { index } = $$props;
     	let countryData;
-    	const writable_props = ["data", "countryName", "emojiHtml"];
+    	const writable_props = ["data", "countryName", "emojiHtml", "index"];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<CountryStats> was created with unknown prop '${key}'`);
@@ -926,12 +1037,14 @@ var app = (function () {
     		if ("data" in $$props) $$invalidate(2, data = $$props.data);
     		if ("countryName" in $$props) $$invalidate(3, countryName = $$props.countryName);
     		if ("emojiHtml" in $$props) $$invalidate(0, emojiHtml = $$props.emojiHtml);
+    		if ("index" in $$props) $$invalidate(4, index = $$props.index);
     	};
 
     	$$self.$capture_state = () => ({
     		data,
     		countryName,
     		emojiHtml,
+    		index,
     		countryData
     	});
 
@@ -939,6 +1052,7 @@ var app = (function () {
     		if ("data" in $$props) $$invalidate(2, data = $$props.data);
     		if ("countryName" in $$props) $$invalidate(3, countryName = $$props.countryName);
     		if ("emojiHtml" in $$props) $$invalidate(0, emojiHtml = $$props.emojiHtml);
+    		if ("index" in $$props) $$invalidate(4, index = $$props.index);
     		if ("countryData" in $$props) $$invalidate(1, countryData = $$props.countryData);
     	};
 
@@ -958,13 +1072,19 @@ var app = (function () {
     		}
     	};
 
-    	return [emojiHtml, countryData, data, countryName];
+    	return [emojiHtml, countryData, data, countryName, index];
     }
 
     class CountryStats extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$2, create_fragment$2, safe_not_equal, { data: 2, countryName: 3, emojiHtml: 0 });
+
+    		init(this, options, instance$2, create_fragment$2, safe_not_equal, {
+    			data: 2,
+    			countryName: 3,
+    			emojiHtml: 0,
+    			index: 4
+    		});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -986,6 +1106,10 @@ var app = (function () {
 
     		if (/*emojiHtml*/ ctx[0] === undefined && !("emojiHtml" in props)) {
     			console.warn("<CountryStats> was created without expected prop 'emojiHtml'");
+    		}
+
+    		if (/*index*/ ctx[4] === undefined && !("index" in props)) {
+    			console.warn("<CountryStats> was created without expected prop 'index'");
     		}
     	}
 
@@ -1010,6 +1134,14 @@ var app = (function () {
     	}
 
     	set emojiHtml(value) {
+    		throw new Error("<CountryStats>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get index() {
+    		throw new Error("<CountryStats>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set index(value) {
     		throw new Error("<CountryStats>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -1043,6 +1175,170 @@ var app = (function () {
     /* src\App.svelte generated by Svelte v3.20.1 */
     const file$3 = "src\\App.svelte";
 
+    function get_each_context(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[4] = list[i];
+    	child_ctx[6] = i;
+    	return child_ctx;
+    }
+
+    // (61:3) {#if countriesData.length > 1}
+    function create_if_block$1(ctx) {
+    	let each_1_anchor;
+    	let current;
+    	let each_value = Array(3);
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+    	}
+
+    	const out = i => transition_out(each_blocks[i], 1, 1, () => {
+    		each_blocks[i] = null;
+    	});
+
+    	const block = {
+    		c: function create() {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			each_1_anchor = empty();
+    		},
+    		m: function mount(target, anchor) {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(target, anchor);
+    			}
+
+    			insert_dev(target, each_1_anchor, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*countriesData*/ 2) {
+    				each_value = Array(3);
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    						transition_in(each_blocks[i], 1);
+    					} else {
+    						each_blocks[i] = create_each_block(child_ctx);
+    						each_blocks[i].c();
+    						transition_in(each_blocks[i], 1);
+    						each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
+    					}
+    				}
+
+    				group_outros();
+
+    				for (i = each_value.length; i < each_blocks.length; i += 1) {
+    					out(i);
+    				}
+
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			for (let i = 0; i < each_value.length; i += 1) {
+    				transition_in(each_blocks[i]);
+    			}
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			each_blocks = each_blocks.filter(Boolean);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				transition_out(each_blocks[i]);
+    			}
+
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_each(each_blocks, detaching);
+    			if (detaching) detach_dev(each_1_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$1.name,
+    		type: "if",
+    		source: "(61:3) {#if countriesData.length > 1}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (62:4) {#each Array(3) as _, i}
+    function create_each_block(ctx) {
+    	let div;
+    	let t;
+    	let current;
+
+    	const countrystats = new CountryStats({
+    			props: {
+    				data: /*countriesData*/ ctx[1],
+    				countryName: /*countriesData*/ ctx[1][/*i*/ ctx[6]].country,
+    				index: /*i*/ ctx[6]
+    			},
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(countrystats.$$.fragment);
+    			t = space();
+    			attr_dev(div, "class", "col-md-4 mt-4");
+    			add_location(div, file$3, 62, 5, 1486);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(countrystats, div, null);
+    			append_dev(div, t);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const countrystats_changes = {};
+    			if (dirty & /*countriesData*/ 2) countrystats_changes.data = /*countriesData*/ ctx[1];
+    			if (dirty & /*countriesData*/ 2) countrystats_changes.countryName = /*countriesData*/ ctx[1][/*i*/ ctx[6]].country;
+    			countrystats.$set(countrystats_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(countrystats.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(countrystats.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(countrystats);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block.name,
+    		type: "each",
+    		source: "(62:4) {#each Array(3) as _, i}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
     function create_fragment$3(ctx) {
     	let div8;
     	let t0;
@@ -1052,12 +1348,14 @@ var app = (function () {
     	let t1;
     	let div1;
     	let t2;
-    	let div6;
-    	let div3;
-    	let t3;
     	let div4;
+    	let div3;
+    	let h20;
     	let t4;
+    	let t5;
+    	let div6;
     	let div5;
+    	let h21;
     	let current;
     	const navbar = new Navbar({ $$inline: true });
 
@@ -1066,7 +1364,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	const countrystats0 = new CountryStats({
+    	const countrystats = new CountryStats({
     			props: {
     				data: /*countriesData*/ ctx[1],
     				countryName: "Poland",
@@ -1075,32 +1373,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	const countrystats1 = new CountryStats({
-    			props: {
-    				data: /*countriesData*/ ctx[1],
-    				countryName: "USA",
-    				emojiHtml: "🇧🇪"
-    			},
-    			$$inline: true
-    		});
-
-    	const countrystats2 = new CountryStats({
-    			props: {
-    				data: /*countriesData*/ ctx[1],
-    				countryName: "Germany",
-    				emojiHtml: "🇩🇪"
-    			},
-    			$$inline: true
-    		});
-
-    	const countrystats3 = new CountryStats({
-    			props: {
-    				data: /*countriesData*/ ctx[1],
-    				countryName: "China",
-    				emojiHtml: "🇨🇳"
-    			},
-    			$$inline: true
-    		});
+    	let if_block = /*countriesData*/ ctx[1].length > 1 && create_if_block$1(ctx);
 
     	const block = {
     		c: function create() {
@@ -1113,36 +1386,40 @@ var app = (function () {
     			create_component(sumstats.$$.fragment);
     			t1 = space();
     			div1 = element("div");
-    			create_component(countrystats0.$$.fragment);
+    			create_component(countrystats.$$.fragment);
     			t2 = space();
-    			div6 = element("div");
-    			div3 = element("div");
-    			create_component(countrystats1.$$.fragment);
-    			t3 = space();
     			div4 = element("div");
-    			create_component(countrystats2.$$.fragment);
+    			div3 = element("div");
+    			h20 = element("h2");
+    			h20.textContent = "The worst situation";
     			t4 = space();
+    			if (if_block) if_block.c();
+    			t5 = space();
+    			div6 = element("div");
     			div5 = element("div");
-    			create_component(countrystats3.$$.fragment);
-    			attr_dev(div0, "class", "col-md-7 mt-4 mr-auto");
-    			add_location(div0, file$3, 42, 3, 956);
+    			h21 = element("h2");
+    			h21.textContent = "All statistics";
+    			attr_dev(div0, "class", "col-md-8 mt-4 mr-auto");
+    			add_location(div0, file$3, 46, 3, 1069);
     			attr_dev(div1, "class", "col-md-4 mt-4");
-    			add_location(div1, file$3, 45, 3, 1044);
+    			add_location(div1, file$3, 49, 3, 1157);
     			attr_dev(div2, "class", "row");
-    			add_location(div2, file$3, 41, 2, 934);
-    			attr_dev(div3, "class", "col-md-4 mt-4");
-    			add_location(div3, file$3, 54, 3, 1219);
-    			attr_dev(div4, "class", "col-md-4 mt-4");
-    			add_location(div4, file$3, 60, 3, 1358);
-    			attr_dev(div5, "class", "col-md-4 mt-4");
-    			add_location(div5, file$3, 66, 3, 1501);
-    			attr_dev(div6, "class", "row");
-    			add_location(div6, file$3, 53, 2, 1197);
+    			add_location(div2, file$3, 45, 2, 1047);
+    			add_location(h20, file$3, 58, 4, 1375);
+    			attr_dev(div3, "class", "col-12");
+    			add_location(div3, file$3, 57, 3, 1349);
+    			attr_dev(div4, "class", "row shadow-lg mt-4 p-4");
+    			add_location(div4, file$3, 56, 2, 1308);
+    			add_location(h21, file$3, 73, 4, 1748);
+    			attr_dev(div5, "class", "col-12");
+    			add_location(div5, file$3, 72, 3, 1722);
+    			attr_dev(div6, "class", "row shadow-lg mt-4 p-4");
+    			add_location(div6, file$3, 71, 2, 1681);
     			attr_dev(div7, "class", "container");
     			attr_dev(div7, "id", "main");
-    			add_location(div7, file$3, 40, 1, 897);
+    			add_location(div7, file$3, 44, 1, 1010);
     			attr_dev(div8, "id", "app");
-    			add_location(div8, file$3, 38, 0, 867);
+    			add_location(div8, file$3, 42, 0, 980);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1157,63 +1434,68 @@ var app = (function () {
     			mount_component(sumstats, div0, null);
     			append_dev(div2, t1);
     			append_dev(div2, div1);
-    			mount_component(countrystats0, div1, null);
+    			mount_component(countrystats, div1, null);
     			append_dev(div7, t2);
+    			append_dev(div7, div4);
+    			append_dev(div4, div3);
+    			append_dev(div3, h20);
+    			append_dev(div4, t4);
+    			if (if_block) if_block.m(div4, null);
+    			append_dev(div7, t5);
     			append_dev(div7, div6);
-    			append_dev(div6, div3);
-    			mount_component(countrystats1, div3, null);
-    			append_dev(div6, t3);
-    			append_dev(div6, div4);
-    			mount_component(countrystats2, div4, null);
-    			append_dev(div6, t4);
     			append_dev(div6, div5);
-    			mount_component(countrystats3, div5, null);
+    			append_dev(div5, h21);
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
     			const sumstats_changes = {};
     			if (dirty & /*summaryData*/ 1) sumstats_changes.data = /*summaryData*/ ctx[0];
     			sumstats.$set(sumstats_changes);
-    			const countrystats0_changes = {};
-    			if (dirty & /*countriesData*/ 2) countrystats0_changes.data = /*countriesData*/ ctx[1];
-    			countrystats0.$set(countrystats0_changes);
-    			const countrystats1_changes = {};
-    			if (dirty & /*countriesData*/ 2) countrystats1_changes.data = /*countriesData*/ ctx[1];
-    			countrystats1.$set(countrystats1_changes);
-    			const countrystats2_changes = {};
-    			if (dirty & /*countriesData*/ 2) countrystats2_changes.data = /*countriesData*/ ctx[1];
-    			countrystats2.$set(countrystats2_changes);
-    			const countrystats3_changes = {};
-    			if (dirty & /*countriesData*/ 2) countrystats3_changes.data = /*countriesData*/ ctx[1];
-    			countrystats3.$set(countrystats3_changes);
+    			const countrystats_changes = {};
+    			if (dirty & /*countriesData*/ 2) countrystats_changes.data = /*countriesData*/ ctx[1];
+    			countrystats.$set(countrystats_changes);
+
+    			if (/*countriesData*/ ctx[1].length > 1) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+    					transition_in(if_block, 1);
+    				} else {
+    					if_block = create_if_block$1(ctx);
+    					if_block.c();
+    					transition_in(if_block, 1);
+    					if_block.m(div4, null);
+    				}
+    			} else if (if_block) {
+    				group_outros();
+
+    				transition_out(if_block, 1, 1, () => {
+    					if_block = null;
+    				});
+
+    				check_outros();
+    			}
     		},
     		i: function intro(local) {
     			if (current) return;
     			transition_in(navbar.$$.fragment, local);
     			transition_in(sumstats.$$.fragment, local);
-    			transition_in(countrystats0.$$.fragment, local);
-    			transition_in(countrystats1.$$.fragment, local);
-    			transition_in(countrystats2.$$.fragment, local);
-    			transition_in(countrystats3.$$.fragment, local);
+    			transition_in(countrystats.$$.fragment, local);
+    			transition_in(if_block);
     			current = true;
     		},
     		o: function outro(local) {
     			transition_out(navbar.$$.fragment, local);
     			transition_out(sumstats.$$.fragment, local);
-    			transition_out(countrystats0.$$.fragment, local);
-    			transition_out(countrystats1.$$.fragment, local);
-    			transition_out(countrystats2.$$.fragment, local);
-    			transition_out(countrystats3.$$.fragment, local);
+    			transition_out(countrystats.$$.fragment, local);
+    			transition_out(if_block);
     			current = false;
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div8);
     			destroy_component(navbar);
     			destroy_component(sumstats);
-    			destroy_component(countrystats0);
-    			destroy_component(countrystats1);
-    			destroy_component(countrystats2);
-    			destroy_component(countrystats3);
+    			destroy_component(countrystats);
+    			if (if_block) if_block.d();
     		}
     	};
 
@@ -1234,7 +1516,7 @@ var app = (function () {
 
     	const getSummaryData = () => {
     		fetch(`${store.apiUrl}all`).then(res => res.json()).then(resData => {
-    			if (summaryData.cases !== resData.cases) {
+    			if (summaryData.cases !== resData.cases || summaryData.deaths !== resData.deaths || summaryData.recovered !== resData.recovered) {
     				$$invalidate(0, summaryData = resData);
     				getCountriesData();
     			}

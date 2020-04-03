@@ -1,4 +1,8 @@
 @charset "UTF-8";
+.card-header {
+  background-color: transparent !important;
+}
+
 /*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
