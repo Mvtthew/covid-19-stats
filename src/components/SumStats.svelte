@@ -1,5 +1,5 @@
 <script>
-	export let globalData;
+	export let data;
 </script>
 
 <div class="card shadow-lg">
@@ -13,14 +13,20 @@
 		<ul class="list-group ">
 			<li class="list-group-item bg-transparent">
 				<p class="mb-0 d-flex justify-content-between">
-					<strong>Confirmed</strong>
-					{globalData.latest.confirmed}
+					<strong>Cases</strong>
+					{data.cases}
 				</p>
 			</li>
 			<li class="list-group-item bg-transparent">
 				<p class="mb-0 d-flex justify-content-between">
 					<strong>Deaths</strong>
-					{globalData.latest.deaths}
+					{data.deaths}
+				</p>
+			</li>
+			<li class="list-group-item bg-transparent">
+				<p class="mb-0 d-flex justify-content-between">
+					<strong>Recovered</strong>
+					{data.recovered}
 				</p>
 			</li>
 		</ul>

@@ -1,25 +1,21 @@
 export default {
-	latest: {
-		confirmed: 0,
-		deaths: 0
+	summary: {
+		cases: 0,
+		deaths: 0,
+		recovered: 0
 	},
-	locations: [
+	countries: [
 		{
-			id: 0,
 			country: '',
-			country_code: '00',
-			country_population: 0,
-			province: '',
-			last_updated: new Date,
-			coordinates: {
-				latitude: 0,
-				longitude: 0
-			},
-			latest: {
-				confirmed: 0,
-				deaths: 0,
-				recovered: 0
-			}
-		},
+			cases: 0,
+			todayCases: 0,
+			deaths: 0,
+			todayDeaths: 0,
+			recovered: 0,
+			active: 0,
+			critical: 0,
+			casesPerOneMillion: 0,
+			deathsPerOneMillion: 0
+		}
 	]
 };

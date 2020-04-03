@@ -7,24 +7,33 @@
 	import store from "./store.js";
 	import dataSchema from "./models/data.js";
 
-	let globalData = dataSchema;
+	let summaryData = dataSchema.summary;
+	let countriesData = dataSchema.countries;
 
-	const getGlobalData = () => {
-		fetch(`${store.apiUrl}locations`)
+	const getSummaryData = () => {
+		fetch(`${store.apiUrl}all`)
 			.then(res => res.json())
 			.then(resData => {
-				if (globalData.latest.confirmed != resData.latest.confirmed) {
-					globalData = resData;
-					console.log("upda");
+				if (summaryData.cases !== resData.cases) {
+					summaryData = resData;
+					getCountriesData();
 				}
+			});
+	};
+
+	const getCountriesData = () => {
+		fetch(`${store.apiUrl}countries`)
+			.then(res => res.json())
+			.then(resData => {
+				countriesData = resData;
 			});
 	};
 
 	// Auto refresh data
 	setInterval(() => {
-		getGlobalData();
+		getSummaryData();
 	}, 5000);
-	getGlobalData();
+	getSummaryData();
 </script>
 
 <div id="app">
@@ -32,10 +41,10 @@
 	<div class="py-4 container" id="main">
 		<div class="row">
 			<div class="col-md-8">
-				<Map {globalData} />
+				<Map data={countriesData} />
 			</div>
 			<div class="col-md-4">
-				<SumStats {globalData} />
+				<SumStats data={summaryData} />
 			</div>
 		</div>
 	</div>

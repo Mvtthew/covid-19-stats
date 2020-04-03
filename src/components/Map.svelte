@@ -1,16 +1,19 @@
 <script>
-	export let globalData;
-	let parsedData = [["Country", "Confirmed"]];
-	let parsedDataClear = [["Country", "Confirmed"]];
+	export let data;
+	let parsedData = [["Country", "Active cases", "Deaths"]];
+	let parsedDataClear = [["Country", "Active cases", "Deaths"]];
 	$: {
 		parsedData = parsedDataClear;
-		globalData.locations.forEach(location => {
+		data.forEach(location => {
+			if (location.country == "USA") {
+				location.country = "United States";
+			}
+			if (location.country == "UK") {
+				location.country = "United Kingdom";
+			}
 			parsedData = [
 				...parsedData,
-				[
-					location.country,
-					location.latest.confirmed + location.latest.recovered
-				]
+				[location.country, location.active, location.deaths]
 			];
 		});
 		drawMap();
@@ -44,7 +47,6 @@
 			chart.draw(data, options);
 		}
 	};
-	drawMap();
 </script>
 
 <div>

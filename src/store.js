@@ -1,3 +1,3 @@
 export default {
-	apiUrl: 'https://coronavirus-tracker-api.herokuapp.com/v2/'
+	apiUrl: 'https://coronavirus-19-api.herokuapp.com/'
 }
