@@ -13,7 +13,7 @@ $enable-shadows: true;
 
 // Cards
 $card-bg: transparent;
-$card-color: #eeeeee;
+$card-color: #dadada;
 $card-border-width: 0;
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
@@ -22,5 +22,14 @@ $card-border-width: 0;
 #app {
 	#main {
 		min-height: calc(100vh - 56px);
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		color: white;
 	}
 }

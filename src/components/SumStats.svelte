@@ -13,20 +13,29 @@
 		<ul class="list-group ">
 			<li class="list-group-item bg-transparent">
 				<p class="mb-0 d-flex justify-content-between">
-					<strong>Cases</strong>
-					{data.cases}
+					<strong>All cases</strong>
+					<span>
+						{data.cases}
+						<i class="bx bxs-layer" />
+					</span>
 				</p>
 			</li>
 			<li class="list-group-item bg-transparent">
 				<p class="mb-0 d-flex justify-content-between">
 					<strong>Deaths</strong>
-					{data.deaths}
+					<span>
+						{data.deaths}
+						<i class="bx bx-layer-minus" />
+					</span>
 				</p>
 			</li>
 			<li class="list-group-item bg-transparent">
 				<p class="mb-0 d-flex justify-content-between">
 					<strong>Recovered</strong>
-					{data.recovered}
+					<span>
+						{data.recovered}
+						<i class="bx bx-layer-plus" />
+					</span>
 				</p>
 			</li>
 		</ul>

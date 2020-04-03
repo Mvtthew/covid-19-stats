@@ -4356,7 +4356,7 @@ input[type=button].btn-block {
   flex: 1 1 auto;
   min-height: 1px;
   padding: 1.25rem;
-  color: #eeeeee;
+  color: #dadada;
 }
 
 .card-title {
@@ -9925,6 +9925,14 @@ h3 {
 }
 #app #main {
   min-height: calc(100vh - 56px);
+}
+#app h1,
+#app h2,
+#app h3,
+#app h4,
+#app h5,
+#app h6 {
+  color: white;
 }
 
 /*# sourceMappingURL=styles.css.map */
