@@ -5,7 +5,7 @@
 	import CountryStats from "./components/CountryStats.svelte";
 
 	import store from "./store.js";
-	import dataSchema from "./models/data.js";
+	import dataSchema from "./models/Data.js";
 
 	let summaryData = dataSchema.summary;
 	let countriesData = dataSchema.countries;
