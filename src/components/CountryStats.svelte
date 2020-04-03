@@ -29,7 +29,9 @@
 				<p class="mb-0 d-flex justify-content-between">
 					<strong>All cases</strong>
 					<span>
-						{countryData.cases}
+						{#if countryData.cases}
+							{countryData.cases.toLocaleString()}
+						{/if}
 						<i class="bx bxs-layer" />
 					</span>
 				</p>
@@ -38,7 +40,9 @@
 				<p class="mb-0 d-flex justify-content-between">
 					<strong>Active cases</strong>
 					<span>
-						{countryData.active}
+						{#if countryData.active}
+							{countryData.active.toLocaleString()}
+						{/if}
 						<i class="bx bx-layer" />
 					</span>
 				</p>
@@ -47,7 +51,9 @@
 				<p class="mb-0 d-flex justify-content-between">
 					<strong>Recovered</strong>
 					<span>
-						{countryData.recovered}
+						{#if countryData.recovered}
+							{countryData.recovered.toLocaleString()}
+						{/if}
 						<i class="bx bx-plus-medical" />
 					</span>
 				</p>
@@ -56,7 +62,9 @@
 				<p class="mb-0 d-flex justify-content-between">
 					<strong>Deaths</strong>
 					<span>
-						{countryData.deaths}
+						{#if countryData.deaths}
+							{countryData.deaths.toLocaleString()}
+						{/if}
 						<i class="bx bxs-skull" />
 					</span>
 				</p>

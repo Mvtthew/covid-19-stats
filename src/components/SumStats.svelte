@@ -15,7 +15,7 @@
 				<p class="mb-0 d-flex justify-content-between">
 					<strong>All cases</strong>
 					<span>
-						{data.cases}
+						{#if data.cases}{data.cases.toLocaleString()}{/if}
 						<i class="bx bxs-layer" />
 					</span>
 				</p>
@@ -24,7 +24,9 @@
 				<p class="mb-0 d-flex justify-content-between">
 					<strong>Recovered</strong>
 					<span>
-						{data.recovered}
+						{#if data.recovered}
+							{data.recovered.toLocaleString()}
+						{/if}
 						<i class="bx bx-plus-medical" />
 					</span>
 				</p>
@@ -33,7 +35,7 @@
 				<p class="mb-0 d-flex justify-content-between">
 					<strong>Deaths</strong>
 					<span>
-						{data.deaths}
+						{#if data.deaths}{data.deaths.toLocaleString()}{/if}
 						<i class="bx bxs-skull" />
 					</span>
 				</p>

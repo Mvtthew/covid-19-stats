@@ -482,6 +482,99 @@ var app = (function () {
 
     const file$1 = "src\\components\\SumStats.svelte";
 
+    // (18:6) {#if data.cases}
+    function create_if_block_2(ctx) {
+    	let t_value = /*data*/ ctx[0].cases.toLocaleString() + "";
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text(t_value);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*data*/ 1 && t_value !== (t_value = /*data*/ ctx[0].cases.toLocaleString() + "")) set_data_dev(t, t_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_2.name,
+    		type: "if",
+    		source: "(18:6) {#if data.cases}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (27:6) {#if data.recovered}
+    function create_if_block_1(ctx) {
+    	let t_value = /*data*/ ctx[0].recovered.toLocaleString() + "";
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text(t_value);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*data*/ 1 && t_value !== (t_value = /*data*/ ctx[0].recovered.toLocaleString() + "")) set_data_dev(t, t_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_1.name,
+    		type: "if",
+    		source: "(27:6) {#if data.recovered}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (38:6) {#if data.deaths}
+    function create_if_block(ctx) {
+    	let t_value = /*data*/ ctx[0].deaths.toLocaleString() + "";
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text(t_value);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*data*/ 1 && t_value !== (t_value = /*data*/ ctx[0].deaths.toLocaleString() + "")) set_data_dev(t, t_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block.name,
+    		type: "if",
+    		source: "(38:6) {#if data.deaths}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
     function create_fragment$1(ctx) {
     	let div2;
     	let div0;
@@ -496,30 +589,27 @@ var app = (function () {
     	let strong0;
     	let t3;
     	let span0;
-    	let t4_value = /*data*/ ctx[0].cases + "";
     	let t4;
-    	let t5;
     	let i1;
-    	let t6;
+    	let t5;
     	let li1;
     	let p1;
     	let strong1;
-    	let t8;
+    	let t7;
     	let span1;
-    	let t9_value = /*data*/ ctx[0].recovered + "";
-    	let t9;
-    	let t10;
+    	let t8;
     	let i2;
-    	let t11;
+    	let t9;
     	let li2;
     	let p2;
     	let strong2;
-    	let t13;
+    	let t11;
     	let span2;
-    	let t14_value = /*data*/ ctx[0].deaths + "";
-    	let t14;
-    	let t15;
+    	let t12;
     	let i3;
+    	let if_block0 = /*data*/ ctx[0].cases && create_if_block_2(ctx);
+    	let if_block1 = /*data*/ ctx[0].recovered && create_if_block_1(ctx);
+    	let if_block2 = /*data*/ ctx[0].deaths && create_if_block(ctx);
 
     	const block = {
     		c: function create() {
@@ -537,28 +627,28 @@ var app = (function () {
     			strong0.textContent = "All cases";
     			t3 = space();
     			span0 = element("span");
-    			t4 = text(t4_value);
-    			t5 = space();
+    			if (if_block0) if_block0.c();
+    			t4 = space();
     			i1 = element("i");
-    			t6 = space();
+    			t5 = space();
     			li1 = element("li");
     			p1 = element("p");
     			strong1 = element("strong");
     			strong1.textContent = "Recovered";
-    			t8 = space();
+    			t7 = space();
     			span1 = element("span");
-    			t9 = text(t9_value);
-    			t10 = space();
+    			if (if_block1) if_block1.c();
+    			t8 = space();
     			i2 = element("i");
-    			t11 = space();
+    			t9 = space();
     			li2 = element("li");
     			p2 = element("p");
     			strong2 = element("strong");
     			strong2.textContent = "Deaths";
-    			t13 = space();
+    			t11 = space();
     			span2 = element("span");
-    			t14 = text(t14_value);
-    			t15 = space();
+    			if (if_block2) if_block2.c();
+    			t12 = space();
     			i3 = element("i");
     			attr_dev(i0, "class", "bx bx-data");
     			add_location(i0, file$1, 7, 3, 123);
@@ -568,28 +658,28 @@ var app = (function () {
     			add_location(div0, file$1, 5, 1, 73);
     			add_location(strong0, file$1, 15, 5, 339);
     			attr_dev(i1, "class", "bx bxs-layer");
-    			add_location(i1, file$1, 18, 6, 406);
+    			add_location(i1, file$1, 18, 6, 444);
     			add_location(span0, file$1, 16, 5, 372);
     			attr_dev(p0, "class", "mb-0 d-flex justify-content-between");
     			add_location(p0, file$1, 14, 4, 285);
     			attr_dev(li0, "class", "list-group-item bg-transparent");
     			add_location(li0, file$1, 13, 3, 236);
-    			add_location(strong1, file$1, 24, 5, 574);
+    			add_location(strong1, file$1, 24, 5, 612);
     			attr_dev(i2, "class", "bx bx-plus-medical");
-    			add_location(i2, file$1, 27, 6, 645);
-    			add_location(span1, file$1, 25, 5, 607);
+    			add_location(i2, file$1, 29, 6, 742);
+    			add_location(span1, file$1, 25, 5, 645);
     			attr_dev(p1, "class", "mb-0 d-flex justify-content-between");
-    			add_location(p1, file$1, 23, 4, 520);
+    			add_location(p1, file$1, 23, 4, 558);
     			attr_dev(li1, "class", "list-group-item bg-transparent");
-    			add_location(li1, file$1, 22, 3, 471);
-    			add_location(strong2, file$1, 33, 5, 819);
+    			add_location(li1, file$1, 22, 3, 509);
+    			add_location(strong2, file$1, 35, 5, 916);
     			attr_dev(i3, "class", "bx bxs-skull");
-    			add_location(i3, file$1, 36, 6, 884);
-    			add_location(span2, file$1, 34, 5, 849);
+    			add_location(i3, file$1, 38, 6, 1020);
+    			add_location(span2, file$1, 36, 5, 946);
     			attr_dev(p2, "class", "mb-0 d-flex justify-content-between");
-    			add_location(p2, file$1, 32, 4, 765);
+    			add_location(p2, file$1, 34, 4, 862);
     			attr_dev(li2, "class", "list-group-item bg-transparent");
-    			add_location(li2, file$1, 31, 3, 716);
+    			add_location(li2, file$1, 33, 3, 813);
     			attr_dev(ul, "class", "list-group ");
     			add_location(ul, file$1, 12, 2, 207);
     			attr_dev(div1, "class", "card-body");
@@ -614,37 +704,75 @@ var app = (function () {
     			append_dev(p0, strong0);
     			append_dev(p0, t3);
     			append_dev(p0, span0);
+    			if (if_block0) if_block0.m(span0, null);
     			append_dev(span0, t4);
-    			append_dev(span0, t5);
     			append_dev(span0, i1);
-    			append_dev(ul, t6);
+    			append_dev(ul, t5);
     			append_dev(ul, li1);
     			append_dev(li1, p1);
     			append_dev(p1, strong1);
-    			append_dev(p1, t8);
+    			append_dev(p1, t7);
     			append_dev(p1, span1);
-    			append_dev(span1, t9);
-    			append_dev(span1, t10);
+    			if (if_block1) if_block1.m(span1, null);
+    			append_dev(span1, t8);
     			append_dev(span1, i2);
-    			append_dev(ul, t11);
+    			append_dev(ul, t9);
     			append_dev(ul, li2);
     			append_dev(li2, p2);
     			append_dev(p2, strong2);
-    			append_dev(p2, t13);
+    			append_dev(p2, t11);
     			append_dev(p2, span2);
-    			append_dev(span2, t14);
-    			append_dev(span2, t15);
+    			if (if_block2) if_block2.m(span2, null);
+    			append_dev(span2, t12);
     			append_dev(span2, i3);
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*data*/ 1 && t4_value !== (t4_value = /*data*/ ctx[0].cases + "")) set_data_dev(t4, t4_value);
-    			if (dirty & /*data*/ 1 && t9_value !== (t9_value = /*data*/ ctx[0].recovered + "")) set_data_dev(t9, t9_value);
-    			if (dirty & /*data*/ 1 && t14_value !== (t14_value = /*data*/ ctx[0].deaths + "")) set_data_dev(t14, t14_value);
+    			if (/*data*/ ctx[0].cases) {
+    				if (if_block0) {
+    					if_block0.p(ctx, dirty);
+    				} else {
+    					if_block0 = create_if_block_2(ctx);
+    					if_block0.c();
+    					if_block0.m(span0, t4);
+    				}
+    			} else if (if_block0) {
+    				if_block0.d(1);
+    				if_block0 = null;
+    			}
+
+    			if (/*data*/ ctx[0].recovered) {
+    				if (if_block1) {
+    					if_block1.p(ctx, dirty);
+    				} else {
+    					if_block1 = create_if_block_1(ctx);
+    					if_block1.c();
+    					if_block1.m(span1, t8);
+    				}
+    			} else if (if_block1) {
+    				if_block1.d(1);
+    				if_block1 = null;
+    			}
+
+    			if (/*data*/ ctx[0].deaths) {
+    				if (if_block2) {
+    					if_block2.p(ctx, dirty);
+    				} else {
+    					if_block2 = create_if_block(ctx);
+    					if_block2.c();
+    					if_block2.m(span2, t12);
+    				}
+    			} else if (if_block2) {
+    				if_block2.d(1);
+    				if_block2 = null;
+    			}
     		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div2);
+    			if (if_block0) if_block0.d();
+    			if (if_block1) if_block1.d();
+    			if (if_block2) if_block2.d();
     		}
     	};
 
@@ -751,7 +879,7 @@ var app = (function () {
     }
 
     // (18:3) {#if emojiHtml}
-    function create_if_block(ctx) {
+    function create_if_block_4(ctx) {
     	let html_tag;
 
     	const block = {
@@ -771,9 +899,133 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block.name,
+    		id: create_if_block_4.name,
     		type: "if",
     		source: "(18:3) {#if emojiHtml}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (32:6) {#if countryData.cases}
+    function create_if_block_3(ctx) {
+    	let t_value = /*countryData*/ ctx[1].cases.toLocaleString() + "";
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text(t_value);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*countryData*/ 2 && t_value !== (t_value = /*countryData*/ ctx[1].cases.toLocaleString() + "")) set_data_dev(t, t_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_3.name,
+    		type: "if",
+    		source: "(32:6) {#if countryData.cases}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (43:6) {#if countryData.active}
+    function create_if_block_2$1(ctx) {
+    	let t_value = /*countryData*/ ctx[1].active.toLocaleString() + "";
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text(t_value);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*countryData*/ 2 && t_value !== (t_value = /*countryData*/ ctx[1].active.toLocaleString() + "")) set_data_dev(t, t_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_2$1.name,
+    		type: "if",
+    		source: "(43:6) {#if countryData.active}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (54:6) {#if countryData.recovered}
+    function create_if_block_1$1(ctx) {
+    	let t_value = /*countryData*/ ctx[1].recovered.toLocaleString() + "";
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text(t_value);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*countryData*/ 2 && t_value !== (t_value = /*countryData*/ ctx[1].recovered.toLocaleString() + "")) set_data_dev(t, t_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_1$1.name,
+    		type: "if",
+    		source: "(54:6) {#if countryData.recovered}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (65:6) {#if countryData.deaths}
+    function create_if_block$1(ctx) {
+    	let t_value = /*countryData*/ ctx[1].deaths.toLocaleString() + "";
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text(t_value);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*countryData*/ 2 && t_value !== (t_value = /*countryData*/ ctx[1].deaths.toLocaleString() + "")) set_data_dev(t, t_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$1.name,
+    		type: "if",
+    		source: "(65:6) {#if countryData.deaths}",
     		ctx
     	});
 
@@ -795,55 +1047,51 @@ var app = (function () {
     	let strong0;
     	let t4;
     	let span0;
-    	let t5_value = /*countryData*/ ctx[1].cases + "";
     	let t5;
-    	let t6;
     	let i0;
-    	let t7;
+    	let t6;
     	let li1;
     	let p1;
     	let strong1;
-    	let t9;
+    	let t8;
     	let span1;
-    	let t10_value = /*countryData*/ ctx[1].active + "";
-    	let t10;
-    	let t11;
+    	let t9;
     	let i1;
-    	let t12;
+    	let t10;
     	let li2;
     	let p2;
     	let strong2;
-    	let t14;
+    	let t12;
     	let span2;
-    	let t15_value = /*countryData*/ ctx[1].recovered + "";
-    	let t15;
-    	let t16;
+    	let t13;
     	let i2;
-    	let t17;
+    	let t14;
     	let li3;
     	let p3;
     	let strong3;
-    	let t19;
+    	let t16;
     	let span3;
-    	let t20_value = /*countryData*/ ctx[1].deaths + "";
-    	let t20;
-    	let t21;
+    	let t17;
     	let i3;
 
     	function select_block_type(ctx, dirty) {
-    		if (/*emojiHtml*/ ctx[0]) return create_if_block;
+    		if (/*emojiHtml*/ ctx[0]) return create_if_block_4;
     		return create_else_block;
     	}
 
     	let current_block_type = select_block_type(ctx);
-    	let if_block = current_block_type(ctx);
+    	let if_block0 = current_block_type(ctx);
+    	let if_block1 = /*countryData*/ ctx[1].cases && create_if_block_3(ctx);
+    	let if_block2 = /*countryData*/ ctx[1].active && create_if_block_2$1(ctx);
+    	let if_block3 = /*countryData*/ ctx[1].recovered && create_if_block_1$1(ctx);
+    	let if_block4 = /*countryData*/ ctx[1].deaths && create_if_block$1(ctx);
 
     	const block = {
     		c: function create() {
     			div2 = element("div");
     			div0 = element("div");
     			h4 = element("h4");
-    			if_block.c();
+    			if_block0.c();
     			t0 = space();
     			t1 = text(t1_value);
     			t2 = space();
@@ -855,38 +1103,38 @@ var app = (function () {
     			strong0.textContent = "All cases";
     			t4 = space();
     			span0 = element("span");
-    			t5 = text(t5_value);
-    			t6 = space();
+    			if (if_block1) if_block1.c();
+    			t5 = space();
     			i0 = element("i");
-    			t7 = space();
+    			t6 = space();
     			li1 = element("li");
     			p1 = element("p");
     			strong1 = element("strong");
     			strong1.textContent = "Active cases";
-    			t9 = space();
+    			t8 = space();
     			span1 = element("span");
-    			t10 = text(t10_value);
-    			t11 = space();
+    			if (if_block2) if_block2.c();
+    			t9 = space();
     			i1 = element("i");
-    			t12 = space();
+    			t10 = space();
     			li2 = element("li");
     			p2 = element("p");
     			strong2 = element("strong");
     			strong2.textContent = "Recovered";
-    			t14 = space();
+    			t12 = space();
     			span2 = element("span");
-    			t15 = text(t15_value);
-    			t16 = space();
+    			if (if_block3) if_block3.c();
+    			t13 = space();
     			i2 = element("i");
-    			t17 = space();
+    			t14 = space();
     			li3 = element("li");
     			p3 = element("p");
     			strong3 = element("strong");
     			strong3.textContent = "Deaths";
-    			t19 = space();
+    			t16 = space();
     			span3 = element("span");
-    			t20 = text(t20_value);
-    			t21 = space();
+    			if (if_block4) if_block4.c();
+    			t17 = space();
     			i3 = element("i");
     			attr_dev(h4, "class", "m-0");
     			add_location(h4, file$2, 16, 2, 342);
@@ -894,36 +1142,36 @@ var app = (function () {
     			add_location(div0, file$2, 15, 1, 313);
     			add_location(strong0, file$2, 29, 5, 657);
     			attr_dev(i0, "class", "bx bxs-layer");
-    			add_location(i0, file$2, 32, 6, 731);
+    			add_location(i0, file$2, 34, 6, 793);
     			add_location(span0, file$2, 30, 5, 690);
     			attr_dev(p0, "class", "mb-0 d-flex justify-content-between");
     			add_location(p0, file$2, 28, 4, 603);
     			attr_dev(li0, "class", "list-group-item bg-transparent");
     			add_location(li0, file$2, 27, 3, 554);
-    			add_location(strong1, file$2, 38, 5, 899);
+    			add_location(strong1, file$2, 40, 5, 961);
     			attr_dev(i1, "class", "bx bx-layer");
-    			add_location(i1, file$2, 41, 6, 977);
-    			add_location(span1, file$2, 39, 5, 935);
+    			add_location(i1, file$2, 45, 6, 1102);
+    			add_location(span1, file$2, 41, 5, 997);
     			attr_dev(p1, "class", "mb-0 d-flex justify-content-between");
-    			add_location(p1, file$2, 37, 4, 845);
+    			add_location(p1, file$2, 39, 4, 907);
     			attr_dev(li1, "class", "list-group-item bg-transparent");
-    			add_location(li1, file$2, 36, 3, 796);
-    			add_location(strong2, file$2, 47, 5, 1144);
+    			add_location(li1, file$2, 38, 3, 858);
+    			add_location(strong2, file$2, 51, 5, 1269);
     			attr_dev(i2, "class", "bx bx-plus-medical");
-    			add_location(i2, file$2, 50, 6, 1222);
-    			add_location(span2, file$2, 48, 5, 1177);
+    			add_location(i2, file$2, 56, 6, 1413);
+    			add_location(span2, file$2, 52, 5, 1302);
     			attr_dev(p2, "class", "mb-0 d-flex justify-content-between");
-    			add_location(p2, file$2, 46, 4, 1090);
+    			add_location(p2, file$2, 50, 4, 1215);
     			attr_dev(li2, "class", "list-group-item bg-transparent");
-    			add_location(li2, file$2, 45, 3, 1041);
-    			add_location(strong3, file$2, 56, 5, 1396);
+    			add_location(li2, file$2, 49, 3, 1166);
+    			add_location(strong3, file$2, 62, 5, 1587);
     			attr_dev(i3, "class", "bx bxs-skull");
-    			add_location(i3, file$2, 59, 6, 1468);
-    			add_location(span3, file$2, 57, 5, 1426);
+    			add_location(i3, file$2, 67, 6, 1722);
+    			add_location(span3, file$2, 63, 5, 1617);
     			attr_dev(p3, "class", "mb-0 d-flex justify-content-between");
-    			add_location(p3, file$2, 55, 4, 1342);
+    			add_location(p3, file$2, 61, 4, 1533);
     			attr_dev(li3, "class", "list-group-item bg-transparent");
-    			add_location(li3, file$2, 54, 3, 1293);
+    			add_location(li3, file$2, 60, 3, 1484);
     			attr_dev(ul, "class", "list-group");
     			add_location(ul, file$2, 26, 2, 526);
     			attr_dev(div1, "class", "card-body");
@@ -938,7 +1186,7 @@ var app = (function () {
     			insert_dev(target, div2, anchor);
     			append_dev(div2, div0);
     			append_dev(div0, h4);
-    			if_block.m(h4, null);
+    			if_block0.m(h4, null);
     			append_dev(h4, t0);
     			append_dev(h4, t1);
     			append_dev(div2, t2);
@@ -949,61 +1197,113 @@ var app = (function () {
     			append_dev(p0, strong0);
     			append_dev(p0, t4);
     			append_dev(p0, span0);
+    			if (if_block1) if_block1.m(span0, null);
     			append_dev(span0, t5);
-    			append_dev(span0, t6);
     			append_dev(span0, i0);
-    			append_dev(ul, t7);
+    			append_dev(ul, t6);
     			append_dev(ul, li1);
     			append_dev(li1, p1);
     			append_dev(p1, strong1);
-    			append_dev(p1, t9);
+    			append_dev(p1, t8);
     			append_dev(p1, span1);
-    			append_dev(span1, t10);
-    			append_dev(span1, t11);
+    			if (if_block2) if_block2.m(span1, null);
+    			append_dev(span1, t9);
     			append_dev(span1, i1);
-    			append_dev(ul, t12);
+    			append_dev(ul, t10);
     			append_dev(ul, li2);
     			append_dev(li2, p2);
     			append_dev(p2, strong2);
-    			append_dev(p2, t14);
+    			append_dev(p2, t12);
     			append_dev(p2, span2);
-    			append_dev(span2, t15);
-    			append_dev(span2, t16);
+    			if (if_block3) if_block3.m(span2, null);
+    			append_dev(span2, t13);
     			append_dev(span2, i2);
-    			append_dev(ul, t17);
+    			append_dev(ul, t14);
     			append_dev(ul, li3);
     			append_dev(li3, p3);
     			append_dev(p3, strong3);
-    			append_dev(p3, t19);
+    			append_dev(p3, t16);
     			append_dev(p3, span3);
-    			append_dev(span3, t20);
-    			append_dev(span3, t21);
+    			if (if_block4) if_block4.m(span3, null);
+    			append_dev(span3, t17);
     			append_dev(span3, i3);
     		},
     		p: function update(ctx, [dirty]) {
-    			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block) {
-    				if_block.p(ctx, dirty);
+    			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block0) {
+    				if_block0.p(ctx, dirty);
     			} else {
-    				if_block.d(1);
-    				if_block = current_block_type(ctx);
+    				if_block0.d(1);
+    				if_block0 = current_block_type(ctx);
 
-    				if (if_block) {
-    					if_block.c();
-    					if_block.m(h4, t0);
+    				if (if_block0) {
+    					if_block0.c();
+    					if_block0.m(h4, t0);
     				}
     			}
 
     			if (dirty & /*countryData*/ 2 && t1_value !== (t1_value = /*countryData*/ ctx[1].country + "")) set_data_dev(t1, t1_value);
-    			if (dirty & /*countryData*/ 2 && t5_value !== (t5_value = /*countryData*/ ctx[1].cases + "")) set_data_dev(t5, t5_value);
-    			if (dirty & /*countryData*/ 2 && t10_value !== (t10_value = /*countryData*/ ctx[1].active + "")) set_data_dev(t10, t10_value);
-    			if (dirty & /*countryData*/ 2 && t15_value !== (t15_value = /*countryData*/ ctx[1].recovered + "")) set_data_dev(t15, t15_value);
-    			if (dirty & /*countryData*/ 2 && t20_value !== (t20_value = /*countryData*/ ctx[1].deaths + "")) set_data_dev(t20, t20_value);
+
+    			if (/*countryData*/ ctx[1].cases) {
+    				if (if_block1) {
+    					if_block1.p(ctx, dirty);
+    				} else {
+    					if_block1 = create_if_block_3(ctx);
+    					if_block1.c();
+    					if_block1.m(span0, t5);
+    				}
+    			} else if (if_block1) {
+    				if_block1.d(1);
+    				if_block1 = null;
+    			}
+
+    			if (/*countryData*/ ctx[1].active) {
+    				if (if_block2) {
+    					if_block2.p(ctx, dirty);
+    				} else {
+    					if_block2 = create_if_block_2$1(ctx);
+    					if_block2.c();
+    					if_block2.m(span1, t9);
+    				}
+    			} else if (if_block2) {
+    				if_block2.d(1);
+    				if_block2 = null;
+    			}
+
+    			if (/*countryData*/ ctx[1].recovered) {
+    				if (if_block3) {
+    					if_block3.p(ctx, dirty);
+    				} else {
+    					if_block3 = create_if_block_1$1(ctx);
+    					if_block3.c();
+    					if_block3.m(span2, t13);
+    				}
+    			} else if (if_block3) {
+    				if_block3.d(1);
+    				if_block3 = null;
+    			}
+
+    			if (/*countryData*/ ctx[1].deaths) {
+    				if (if_block4) {
+    					if_block4.p(ctx, dirty);
+    				} else {
+    					if_block4 = create_if_block$1(ctx);
+    					if_block4.c();
+    					if_block4.m(span3, t17);
+    				}
+    			} else if (if_block4) {
+    				if_block4.d(1);
+    				if_block4 = null;
+    			}
     		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div2);
-    			if_block.d();
+    			if_block0.d();
+    			if (if_block1) if_block1.d();
+    			if (if_block2) if_block2.d();
+    			if (if_block3) if_block3.d();
+    			if (if_block4) if_block4.d();
     		}
     	};
 
@@ -1183,7 +1483,7 @@ var app = (function () {
     }
 
     // (61:3) {#if countriesData.length > 1}
-    function create_if_block$1(ctx) {
+    function create_if_block$2(ctx) {
     	let each_1_anchor;
     	let current;
     	let each_value = Array(3);
@@ -1269,7 +1569,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$1.name,
+    		id: create_if_block$2.name,
     		type: "if",
     		source: "(61:3) {#if countriesData.length > 1}",
     		ctx
@@ -1373,7 +1673,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	let if_block = /*countriesData*/ ctx[1].length > 1 && create_if_block$1(ctx);
+    	let if_block = /*countriesData*/ ctx[1].length > 1 && create_if_block$2(ctx);
 
     	const block = {
     		c: function create() {
@@ -1460,7 +1760,7 @@ var app = (function () {
     					if_block.p(ctx, dirty);
     					transition_in(if_block, 1);
     				} else {
-    					if_block = create_if_block$1(ctx);
+    					if_block = create_if_block$2(ctx);
     					if_block.c();
     					transition_in(if_block, 1);
     					if_block.m(div4, null);
