@@ -18,14 +18,6 @@
 					by Mvtthew
 				</a>
 			</li>
-			<li class="nav-item active">
-				<a
-					class="nav-link"
-					href="https://github.com/javieraviles/covidAPI">
-					<i class="bx bx-code-alt" />
-					API
-				</a>
-			</li>
 		</ul>
 	</div>
 </nav>

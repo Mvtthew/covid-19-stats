@@ -354,15 +354,10 @@ var app = (function () {
     	let a0;
     	let t1;
     	let ul;
-    	let li0;
+    	let li;
     	let a1;
-    	let i0;
+    	let i;
     	let t2;
-    	let t3;
-    	let li1;
-    	let a2;
-    	let i1;
-    	let t4;
 
     	const block = {
     		c: function create() {
@@ -372,32 +367,20 @@ var app = (function () {
     			a0.textContent = "COVID-19 Stats";
     			t1 = space();
     			ul = element("ul");
-    			li0 = element("li");
+    			li = element("li");
     			a1 = element("a");
-    			i0 = element("i");
+    			i = element("i");
     			t2 = text("\r\n\t\t\t\t\tby Mvtthew");
-    			t3 = space();
-    			li1 = element("li");
-    			a2 = element("a");
-    			i1 = element("i");
-    			t4 = text("\r\n\t\t\t\t\tAPI");
     			attr_dev(a0, "class", "navbar-brand");
     			attr_dev(a0, "href", "/");
     			add_location(a0, file, 10, 2, 174);
-    			attr_dev(i0, "class", "bx bxl-github");
-    			add_location(i0, file, 16, 5, 387);
+    			attr_dev(i, "class", "bx bxl-github");
+    			add_location(i, file, 16, 5, 387);
     			attr_dev(a1, "class", "nav-link");
     			attr_dev(a1, "href", "https://github.com/Mvtthew/covid-19-stats");
     			add_location(a1, file, 13, 4, 299);
-    			attr_dev(li0, "class", "nav-item active");
-    			add_location(li0, file, 12, 3, 265);
-    			attr_dev(i1, "class", "bx bx-code-alt");
-    			add_location(i1, file, 24, 5, 577);
-    			attr_dev(a2, "class", "nav-link");
-    			attr_dev(a2, "href", "https://github.com/javieraviles/covidAPI");
-    			add_location(a2, file, 21, 4, 490);
-    			attr_dev(li1, "class", "nav-item active");
-    			add_location(li1, file, 20, 3, 456);
+    			attr_dev(li, "class", "nav-item active");
+    			add_location(li, file, 12, 3, 265);
     			attr_dev(ul, "class", "navbar-nav ml-auto");
     			add_location(ul, file, 11, 2, 229);
     			attr_dev(div, "class", "container");
@@ -414,15 +397,10 @@ var app = (function () {
     			append_dev(div, a0);
     			append_dev(div, t1);
     			append_dev(div, ul);
-    			append_dev(ul, li0);
-    			append_dev(li0, a1);
-    			append_dev(a1, i0);
+    			append_dev(ul, li);
+    			append_dev(li, a1);
+    			append_dev(a1, i);
     			append_dev(a1, t2);
-    			append_dev(ul, t3);
-    			append_dev(ul, li1);
-    			append_dev(li1, a2);
-    			append_dev(a2, i1);
-    			append_dev(a2, t4);
     		},
     		p: noop,
     		i: noop,

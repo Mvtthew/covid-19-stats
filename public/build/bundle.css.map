@@ -5,7 +5,7 @@
     "..\\..\\Navbar.svelte"
   ],
   "sourcesContent": [
-    "<style>\r\n\t.navbar {\r\n\t\tposition: sticky;\r\n\t\ttop: 0;\r\n\t\tz-index: 2000;\r\n\t}\r\n</style>\r\n\r\n<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\r\n\t<div class=\"container\">\r\n\t\t<a class=\"navbar-brand\" href=\"/\">COVID-19 Stats</a>\r\n\t\t<ul class=\"navbar-nav ml-auto\">\r\n\t\t\t<li class=\"nav-item active\">\r\n\t\t\t\t<a\r\n\t\t\t\t\tclass=\"nav-link\"\r\n\t\t\t\t\thref=\"https://github.com/Mvtthew/covid-19-stats\">\r\n\t\t\t\t\t<i class=\"bx bxl-github\" />\r\n\t\t\t\t\tby Mvtthew\r\n\t\t\t\t</a>\r\n\t\t\t</li>\r\n\t\t\t<li class=\"nav-item active\">\r\n\t\t\t\t<a\r\n\t\t\t\t\tclass=\"nav-link\"\r\n\t\t\t\t\thref=\"https://github.com/javieraviles/covidAPI\">\r\n\t\t\t\t\t<i class=\"bx bx-code-alt\" />\r\n\t\t\t\t\tAPI\r\n\t\t\t\t</a>\r\n\t\t\t</li>\r\n\t\t</ul>\r\n\t</div>\r\n</nav>\r\n"
+    "<style>\r\n\t.navbar {\r\n\t\tposition: sticky;\r\n\t\ttop: 0;\r\n\t\tz-index: 2000;\r\n\t}\r\n</style>\r\n\r\n<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\r\n\t<div class=\"container\">\r\n\t\t<a class=\"navbar-brand\" href=\"/\">COVID-19 Stats</a>\r\n\t\t<ul class=\"navbar-nav ml-auto\">\r\n\t\t\t<li class=\"nav-item active\">\r\n\t\t\t\t<a\r\n\t\t\t\t\tclass=\"nav-link\"\r\n\t\t\t\t\thref=\"https://github.com/Mvtthew/covid-19-stats\">\r\n\t\t\t\t\t<i class=\"bx bxl-github\" />\r\n\t\t\t\t\tby Mvtthew\r\n\t\t\t\t</a>\r\n\t\t\t</li>\r\n\t\t</ul>\r\n\t</div>\r\n</nav>\r\n"
   ],
   "names": [],
   "mappings": "AACC,OAAO,aAAC,CAAC,AACR,QAAQ,CAAE,MAAM,CAChB,GAAG,CAAE,CAAC,CACN,OAAO,CAAE,IAAI,AACd,CAAC"
