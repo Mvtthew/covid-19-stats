@@ -54,7 +54,7 @@
 					emojiHtml="🇵🇱" />
 			</div>
 		</div>
-		<div class="row shadow-lg mt-4 p-4">
+		<div class="row shadow-lg mt-4 p-lg-4">
 			<div class="col-12">
 				<h2>The worst situation</h2>
 			</div>

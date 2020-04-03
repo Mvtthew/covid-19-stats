@@ -1299,7 +1299,7 @@ var app = (function () {
     			create_component(countrystats.$$.fragment);
     			t = space();
     			attr_dev(div, "class", "col-md-4 mt-4");
-    			add_location(div, file$3, 62, 5, 1486);
+    			add_location(div, file$3, 62, 5, 1489);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -1405,16 +1405,16 @@ var app = (function () {
     			add_location(div1, file$3, 49, 3, 1157);
     			attr_dev(div2, "class", "row");
     			add_location(div2, file$3, 45, 2, 1047);
-    			add_location(h20, file$3, 58, 4, 1375);
+    			add_location(h20, file$3, 58, 4, 1378);
     			attr_dev(div3, "class", "col-12");
-    			add_location(div3, file$3, 57, 3, 1349);
-    			attr_dev(div4, "class", "row shadow-lg mt-4 p-4");
+    			add_location(div3, file$3, 57, 3, 1352);
+    			attr_dev(div4, "class", "row shadow-lg mt-4 p-lg-4");
     			add_location(div4, file$3, 56, 2, 1308);
-    			add_location(h21, file$3, 73, 4, 1748);
+    			add_location(h21, file$3, 73, 4, 1751);
     			attr_dev(div5, "class", "col-12");
-    			add_location(div5, file$3, 72, 3, 1722);
+    			add_location(div5, file$3, 72, 3, 1725);
     			attr_dev(div6, "class", "row shadow-lg mt-4 p-4");
-    			add_location(div6, file$3, 71, 2, 1681);
+    			add_location(div6, file$3, 71, 2, 1684);
     			attr_dev(div7, "class", "container");
     			attr_dev(div7, "id", "main");
     			add_location(div7, file$3, 44, 1, 1010);
