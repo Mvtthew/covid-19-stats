@@ -18,7 +18,7 @@
 	},
 	"dependencies": {
 		"bootstrap": "^4.4.1",
-		"chart.js": "^2.9.3",
+		"chart.js": "^2.9.4",
 		"chartjs-chart-geo": "^1.1.4",
 		"sirv-cli": "^0.4.4"
 	}
